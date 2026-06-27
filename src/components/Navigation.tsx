@@ -12,6 +12,7 @@ const Navigation = () => {
   const navItems = useMemo(() => [
     { label: 'Home', href: '#hero' },
     { label: 'About', href: '#about' },
+    { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
     { label: 'Contact', href: '#contact' }
@@ -51,18 +52,16 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 z-[60] transition-all duration-300 ${
       scrolled
-        ? 'bg-white bg-opacity-95 backdrop-blur-md shadow-lg'
+        ? 'bg-primary-900/80 backdrop-blur-xl shadow-2xl shadow-black/20 border-b border-white/10'
         : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between h-16 md:h-20">
-      
-
+        <div className="relative flex items-center justify-center h-16 md:h-20 gap-4">
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="flex items-center space-x-8">
+            <div className="flex items-center justify-center space-x-8 rounded-full px-4 py-2 bg-white/5 backdrop-blur-sm border border-white/10">
               {navItems.map((item) => (
                 <a
                   key={item.href}
@@ -71,18 +70,18 @@ const Navigation = () => {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
-                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 hover:text-primary-1000 ${  
-                    scrolled ? 'text-gray-700' : 'text-white'
+                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 hover:text-secondary-100 ${  
+                    scrolled ? 'text-white/80' : 'text-white'
                   } ${
                     activeSection === item.href.substring(1)
-                      ? scrolled ? 'text-primary-600' : 'text-white'
+                      ? scrolled ? 'text-secondary-100' : 'text-white'
                       : ''
                   }`}
                 >
                   {item.label}
                   {activeSection === item.href.substring(1) && (
                     <span className={`absolute bottom-0 left-0 right-0 h-0.5 transition-colors duration-300 ${
-                      scrolled ? 'bg-primary-600' : 'bg-white'
+                      scrolled ? 'bg-secondary-100' : 'bg-white'
                     }`}></span>
                   )}
                 </a>
@@ -91,12 +90,12 @@ const Navigation = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="absolute right-0 md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 rounded-md transition-colors duration-300 ${
                 scrolled
-                  ? 'text-gray-700 hover:text-primary-600'
+                    ? 'text-white hover:text-secondary-100'
                   : 'text-white hover:bg-white hover:bg-opacity-20'
               }`}
               aria-label="Toggle menu"
@@ -113,8 +112,8 @@ const Navigation = () => {
             : 'max-h-0 opacity-0 overflow-hidden'
         }`}>
           <div className={`py-4 space-y-2 ${
-            scrolled ? 'bg-white' : 'bg-white bg-opacity-95'
-          } rounded-lg mt-2`}>
+            scrolled ? 'bg-primary-900/95' : 'bg-primary-900/90'
+          } rounded-2xl mt-2 border border-white/10 backdrop-blur-xl shadow-2xl`}>
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -125,8 +124,8 @@ const Navigation = () => {
                 }}
                 className={`block px-4 py-3 text-base font-medium rounded-md transition-colors duration-300 hover:text-primary-200 ${
                   activeSection === item.href.substring(1)
-                    ? 'text-primary-50  bg-primary-600'
-                    : 'text-gray-700'
+                    ? 'text-white bg-white/10'
+                    : 'text-white/80'
                 }`}
               >
                 {item.label}

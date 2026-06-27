@@ -3,10 +3,20 @@ export interface PersonalInfo {
   title: string;
   tagline: string;
   about: string[];
+  resumeUrl: string;
+  experience: ExperienceEntry[];
   email: string;
   linkedin: string;
   github: string;
   profileImage: string;
+}
+
+export interface ExperienceEntry {
+  organization: string;
+  role: string;
+  duration?: string;
+  project?: string;
+  description?: string;
 }
 
 export interface Project {

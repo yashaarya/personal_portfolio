@@ -8,12 +8,11 @@ export const skills: Skills = {
     { name: "Tailwind CSS", level: "advanced", icon: "🎨" },
     { name: "JavaScript", level: "advanced", icon: "🟨" },
     { name: "HTML5", level: "advanced", icon: "📄" },
-    { name: "CSS3", level: "advanced", icon: "🎨" },
-    { name: "Vue", level: "intermediate", icon: "🌀" }
+    { name: "CSS", level: "advanced", icon: "🎨" },
+
   ],
   backend: [
     { name: "Node.js", level: "advanced", icon: "🟢" },
-    { name: "Python", level: "advanced", icon: "🐍" },
     { name: "Express.js", level: "advanced", icon: "🚂" },
     { name: "PostgreSQL", level: "intermediate", icon: "🐘" },
     { name: "MongoDB", level: "intermediate", icon: "🍃" },
@@ -27,7 +26,6 @@ export const skills: Skills = {
     { name: "Azure", level: "intermediate", icon: "☁️" },
     { name: "Vercel", level: "advanced", icon: "▲" },
     { name: "Figma", level: "intermediate", icon: "🎨" },
-    { name: "VS Code", level: "advanced", icon: "💻" },
     { name: "Postman", level: "advanced", icon: "📮" },
   ]
 };

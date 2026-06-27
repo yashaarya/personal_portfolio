@@ -162,7 +162,7 @@ const Contact = () => {
             {/* Contact Details */}
             <div className="space-y-4">
               {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
+                <div key={index} className="flex items-center gap-4 p-4 bg-gray-50 rounded-lg card-hover">
                   <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center text-primary-600">
                     {info.icon}
                   </div>
@@ -209,7 +209,7 @@ const Contact = () => {
           <div className={`transition-all duration-700 delay-300 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
-            <div className="bg-gray-50 p-8 rounded-2xl">
+            <div className="bg-gray-50 p-8 rounded-2xl card-hover">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 Send Me a Message
               </h3>

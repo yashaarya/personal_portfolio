@@ -20,32 +20,40 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-500 via-primary-600 to-primary-800">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center pt-24 md:pt-28 pb-24 bg-gradient-to-br from-primary-500 via-primary-700 to-primary-900 overflow-hidden">
 
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl animate-bounce-subtle"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-white opacity-10 rounded-full blur-3xl animate-bounce-subtle" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.18),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(245,222,179,0.16),transparent_28%),radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_45%),linear-gradient(135deg,rgba(59,34,32,0.24),rgba(20,10,8,0.28))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:56px_56px] opacity-10" />
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-white/10 rounded-full blur-3xl animate-bounce-subtle"></div>
+        <div className="absolute -bottom-44 -left-44 w-[30rem] h-[30rem] bg-secondary-100/10 rounded-full blur-3xl animate-bounce-subtle" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[38rem] h-[38rem] bg-white/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-6 z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid gap-12 lg:grid-cols-[1.08fr_0.92fr] items-center">
           {/* Text Content */}
-          <div className={`text-white space-y-6 ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+          <div className={`text-white space-y-7 text-left ${isVisible ? 'animate-fade-in' : 'opacity-0'}`}>
+          
+
+            <div className="space-y-3 max-w-4xl">
+              <p className="text-xl lg:text-2xl md:text-sm uppercase  text-white/70"> 
                 {personalInfo.name}
+              </p>
+              <h1 className="text-xl md:text-xl lg:text-3xl italic leading-[0.95] tracking-tight max-w-2xl drop-shadow-[0_8px_30px_rgba(0,0,0,0.35)]">
+                {personalInfo.title.split('|').map((line) => (
+                  <span key={line.trim()} className="block bg-gradient-to-r from-white via-secondary-100 to-white bg-clip-text text-transparent">
+                    {line.trim()}
+                  </span>
+                ))}
               </h1>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-light opacity-90">
-                {personalInfo.title}
-              </h2>
-              <p className="text-lg md:text-xl opacity-80 max-w-lg leading-relaxed">
+              <p className="text-sm md:text-lg lg:text-xl text-white/85 max-w-2xl leading-relaxed">
                 {personalInfo.tagline}
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 pt-6">
+            <div className="flex flex-wrap gap-4 pt-2">
               <button
                 onClick={() => scrollToSection('projects')}
                 className="btn-hover bg-white text-primary-600 px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl"
@@ -53,6 +61,14 @@ const Hero = () => {
                 <ExternalLink size={20} />
                 View Projects
               </button>
+              <a
+                href={personalInfo.resumeUrl}
+                download
+                className="btn-hover border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-primary-600 transition-all duration-300 flex items-center gap-2"
+              >
+                <Download size={20} />
+                Download Resume
+              </a>
               <button
                 onClick={() => scrollToSection('contact')}
                 className="btn-hover border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-primary-600 transition-all duration-300 flex items-center gap-2"
@@ -62,7 +78,7 @@ const Hero = () => {
             </div>
 
             {/* Social Links */}
-            <div className="flex gap-4 pt-4">
+            <div className="flex gap-4 pt-2">
               <a
                 href={personalInfo.github}
                 target="_blank"
@@ -99,17 +115,20 @@ const Hero = () => {
 
           {/* Profile Image */}
           <div className={`flex justify-center ${isVisible ? 'animate-slide-right' : 'opacity-0'}`}>
-            <div className="relative">
-              <div className="absolute inset-0 bg-white bg-opacity-20 rounded-full blur-xl"></div>
-              <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-white border-opacity-50 shadow-2xl">
-                <Image
-                  src={personalInfo.profileImage}
-                  alt={personalInfo.name}
-                  width={400}
-                  height={400}
-                  className="w-full h-full object-cover"
-                  priority
-                />
+            <div className="relative w-full max-w-md">
+              <div className="absolute inset-x-8 top-6 h-24 rounded-full bg-white/15 blur-3xl"></div>
+              <div className="absolute inset-0 rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-md shadow-2xl transform rotate-[-4deg]"></div>
+              <div className="relative rounded-[2rem] border border-white/15 bg-white/10 p-5 shadow-2xl backdrop-blur-md">
+                <div className="overflow-hidden rounded-[1.5rem] border border-white/15 bg-primary-900/20">
+                  <Image
+                    src={personalInfo.profileImage}
+                    alt={personalInfo.name}
+                    width={520}
+                    height={620}
+                    className="h-[420px] w-full object-cover md:h-[500px]"
+                    priority
+                  />
+                </div>
               </div>
             </div>
           </div>
